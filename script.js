@@ -825,7 +825,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         ${new Date(post.publishedAt || post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                                     </span>
                                 </div>
-                                <a href="blog.html?id=${post._id || post.id}" class="project-view-button" style="text-decoration: none;">
+                                <a href="blog.html?slug=${post.slug}" class="project-view-button" style="text-decoration: none;">
                                     Read Post <i data-lucide="arrow-right"></i>
                                 </a>
                             </div>

@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 1. Get the article ID from the URL Query params (e.g., blog.html?id=123)
+    // 1. Get the article slug from the URL Query params (e.g., blog.html?slug=my-post-title)
     const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get('id');
+    const postSlug = urlParams.get('slug');
 
     const skeletonLoader = document.getElementById('skeleton-loader');
     const blogContent = document.getElementById('blog-content');
     const errorMessage = document.getElementById('error-message');
 
-    if (!postId) {
+    if (!postSlug) {
         if (skeletonLoader) skeletonLoader.style.display = 'none';
         showError();
         return;
@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.success && data.posts && data.posts.length > 0) {
-                // Find the specific post by ID
-                const post = data.posts.find(p => p._id === postId || p.id === postId);
+                // Find the specific post by slug
+                const post = data.posts.find(p => p.slug === postSlug);
 
                 if (post) {
                     renderPost(post);
