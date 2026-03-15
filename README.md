@@ -6,7 +6,7 @@ A modern, responsive personal portfolio website showcasing professional services
 
 The portfolio is deployed and accessible at: **[(https://ghufrannaseer.github.io/ghufran-dev/)]** *(deployment URL to be configured)*
 
-*Current local deployment via Replit using Python HTTP Server on port 5000*
+
 
 ## 🛠️ Tech Stack
 
@@ -97,8 +97,6 @@ ghufran-dev/
 ├── script.js               # Main application logic and home page blog fetch
 ├── blog.js                 # Dedicated logic for fetching and rendering single posts
 ├── README.md               # This file
-├── replit.md               # Project documentation (Replit-specific)
-├── .replit                 # Replit deployment configuration
 ├── attached_assets/        # Project assets directory
 │   └── screenshot-*.png    # Project screenshots
 └── .git/                   # Git version control
@@ -141,13 +139,6 @@ ghufran-dev/
    - Navigate to the local server URL in your web browser
    - The site loads automatically with all interactive features
 
-### Alternative: Replit Deployment
-
-This project is configured for **Replit** deployment:
-
-1. Open in Replit workspace
-2. Click "Run" button or execute Replit workflow
-3. The Python HTTP server starts on port 5000 automatically
 
 ## 📝 Available Scripts / Commands
 
@@ -160,10 +151,6 @@ python -m http.server 5000
 python3 -m http.server 8000
 ```
 
-### Replit Workflows
-The `.replit` configuration file includes:
-- **"Project" workflow**: Runs the Portfolio Server
-- **"Portfolio Server" task**: Executes `python -m http.server 5000` on port 5000
 
 ### Browser DevTools
 - Inspect element for development
@@ -204,17 +191,6 @@ const EMAILJS_CONFIG = {
 
 ## 🌍 Deployment
 
-### Replit Deployment (Current)
-The project is configured for **Replit** with the following setup:
-
-**Port Configuration:**
-- Local Port 5000 → External Port 80 (HTTP)
-- Local Port 45681 → External Port 3000 (Alternative)
-
-**Deployment Steps:**
-1. Push code to Replit
-2. Click "Run" or trigger workflow
-3. Access via Replit's public URL
 
 ### Traditional Hosting Deployment
 
