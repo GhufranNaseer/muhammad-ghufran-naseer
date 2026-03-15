@@ -30,15 +30,15 @@
         <div class="header-container">
             <div class="header-content">
                 <div class="logo" data-testid="header-logo">
-                    Muhammad Ghufran
+                    <a href="index.html" style="text-decoration:none; color:inherit;">Muhammad Ghufran</a>
                 </div>
                 <nav class="nav-desktop">
-                    <a href="#services" data-testid="nav-services">Professional Services</a>
-                    <a href="#about" data-testid="nav-about">About Muhammad</a>
-                    <a href="#projects" data-testid="nav-projects">Featured Projects</a>
-                    <a href="#blogs" data-testid="nav-blogs">Latest Articles</a>
-                    <a href="#testimonials" data-testid="nav-testimonials">Client Reviews</a>
-                    <a href="#contact" data-testid="nav-contact">Get In Touch</a>
+                    <a href="index.html#services" data-testid="nav-services">Professional Services</a>
+                    <a href="index.html#about" data-testid="nav-about">About Muhammad</a>
+                    <a href="index.html#projects" data-testid="nav-projects">Featured Projects</a>
+                    <a href="index.html#blogs" data-testid="nav-blogs">Latest Articles</a>
+                    <a href="index.html#testimonials" data-testid="nav-testimonials">Client Reviews</a>
+                    <a href="index.html#contact" data-testid="nav-contact">Get In Touch</a>
                 </nav>
                 <div class="header-actions">
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -58,12 +58,12 @@
             <!-- Mobile Menu -->
             <div class="mobile-menu" id="mobile-menu">
                 <nav class="mobile-nav">
-                    <a href="#services" data-testid="mobile-nav-services">Services</a>
-                    <a href="#about" data-testid="mobile-nav-about">About</a>
-                    <a href="#projects" data-testid="mobile-nav-projects">Projects</a>
-                    <a href="#blogs" data-testid="mobile-nav-blogs">Articles</a>
-                    <a href="#testimonials" data-testid="mobile-nav-testimonials">Testimonials</a>
-                    <a href="#contact" data-testid="mobile-nav-contact">Contact</a>
+                    <a href="index.html#services" data-testid="mobile-nav-services">Services</a>
+                    <a href="index.html#about" data-testid="mobile-nav-about">About</a>
+                    <a href="index.html#projects" data-testid="mobile-nav-projects">Projects</a>
+                    <a href="index.html#blogs" data-testid="mobile-nav-blogs">Articles</a>
+                    <a href="index.html#testimonials" data-testid="mobile-nav-testimonials">Testimonials</a>
+                    <a href="index.html#contact" data-testid="mobile-nav-contact">Contact</a>
                     <div class="mobile-theme-toggle">
                         <button class="theme-toggle" id="mobile-theme-toggle" aria-label="Toggle theme">
                             <i data-lucide="sun" class="sun-icon"></i>
@@ -79,166 +79,86 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section animate-section" id="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1 class="hero-title" data-testid="hero-title">
-                        Hi, I'm <span class="text-primary">Muhammad Ghufran</span>
+    <!-- Blog Post Content -->
+    <main class="container" style="padding-top: 5rem; padding-bottom: 5rem; min-height: 80vh;">
+        <article id="blog-post-article" class="animate-section">
+            <!-- Skeleton Loader -->
+            <div id="skeleton-loader" style="max-width: 800px; margin: 0 auto; padding-top: 1rem;">
+                <header style="margin-bottom: 2rem;">
+                    <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                        <div class="skeleton" style="height: 1.25rem; width: 5rem; border-radius: 9999px;"></div>
+                        <div class="skeleton" style="height: 1rem; width: 8rem; border-radius: 4px;"></div>
+                    </div>
+                    <div class="skeleton" style="height: 3rem; width: 90%; margin-bottom: 0.5rem; border-radius: 8px;">
+                    </div>
+                    <div class="skeleton" style="height: 3rem; width: 60%; margin-bottom: 2rem; border-radius: 8px;">
+                    </div>
+
+                    <div class="skeleton" style="width: 100%; height: 400px; border-radius: 12px; margin-bottom: 2rem;">
+                    </div>
+                </header>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="skeleton" style="height: 1rem; width: 100%; border-radius: 4px;"></div>
+                    <div class="skeleton" style="height: 1rem; width: 100%; border-radius: 4px;"></div>
+                    <div class="skeleton" style="height: 1rem; width: 95%; border-radius: 4px;"></div>
+                    <div class="skeleton" style="height: 1rem; width: 100%; border-radius: 4px;"></div>
+                    <div class="skeleton" style="height: 1rem; width: 80%; border-radius: 4px; margin-bottom: 1.5rem;">
+                    </div>
+
+                    <div class="skeleton" style="height: 1rem; width: 100%; border-radius: 4px;"></div>
+                    <div class="skeleton" style="height: 1rem; width: 100%; border-radius: 4px;"></div>
+                    <div class="skeleton" style="height: 1rem; width: 90%; border-radius: 4px;"></div>
+                    <div class="skeleton" style="height: 1rem; width: 100%; border-radius: 4px;"></div>
+                    <div class="skeleton" style="height: 1rem; width: 70%; border-radius: 4px;"></div>
+                </div>
+            </div>
+
+            <div id="blog-content" style="display: none; max-width: 800px; margin: 0 auto;">
+                <header style="margin-bottom: 2rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <span id="blog-category" class="tech-tag"
+                            style="background-color: var(--primary); color: var(--primary-foreground); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500;"></span>
+                        <span
+                            style="display: inline-flex; align-items: center; gap: 4px; color: var(--muted-foreground); font-size: 0.875rem; margin-left: 1rem;">
+                            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+                            <span id="blog-date"></span>
+                        </span>
+                    </div>
+
+                    <h1 id="blog-title"
+                        style="font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; color: var(--foreground);">
                     </h1>
-                    <div class="typewriter-container">
-                        <span class="text-primary typewriter-text" data-testid="typewriter-text"
-                            id="typewriter-text"></span>
-                        <span class="cursor">|</span>
+
+                    <div
+                        style="width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 2rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+                        <img id="blog-cover-image" src="" alt="Blog Cover"
+                            style="width: 100%; height: auto; display: block; max-height: 500px; object-fit: cover;">
                     </div>
-                    <p class="hero-description" data-testid="hero-description">
-                        BSCS Graduate from Iqra University with ACCP Pro diploma. I specialize in creating modern web
-                        applications,
-                        EMS/CRM systems, and AI-powered solutions that help businesses grow and succeed.
-                    </p>
-                    <p class="hero-subtitle" data-testid="hero-subtitle">
-                        Experienced in React.js, Node.js, PostgreSQL, WordPress with Elementor Pro, and AI integrations.
-                        Strong focus on client communication, quality delivery, and ongoing support.
-                    </p>
-                    <div class="hero-actions">
-                        <button class="btn-primary" id="start-project-btn" data-testid="button-start-project">
-                            <i data-lucide="mail"></i>
-                            Start Project
-                        </button>
-                        <button class="btn-outline" id="download-cv-btn" data-testid="button-download-cv">
-                            <i data-lucide="download"></i>
-                            Download CV
-                        </button>
-                    </div>
+                </header>
+
+                <div id="blog-body" style="font-size: 1.125rem; line-height: 1.8; color: var(--foreground);">
+                    <!-- Content will be injected here -->
                 </div>
-                <!-- Stats Box -->
-                <div class="stats-card">
-                    <div class="stats-grid">
-                        <div class="stat-item" data-testid="stat-0">
-                            <div class="stat-icon">
-                                <i data-lucide="award"></i>
-                            </div>
-                            <div class="stat-value" data-testid="stat-value-0">50+</div>
-                            <div class="stat-label" data-testid="stat-label-0">Projects Completed</div>
-                        </div>
-                        <div class="stat-item" data-testid="stat-1">
-                            <div class="stat-icon">
-                                <i data-lucide="users"></i>
-                            </div>
-                            <div class="stat-value" data-testid="stat-value-1">40+</div>
-                            <div class="stat-label" data-testid="stat-label-1">Happy Clients</div>
-                        </div>
-                        <div class="stat-item" data-testid="stat-2">
-                            <div class="stat-icon">
-                                <i data-lucide="trending-up"></i>
-                            </div>
-                            <div class="stat-value" data-testid="stat-value-2">99%</div>
-                            <div class="stat-label" data-testid="stat-label-2">Success Rate</div>
-                        </div>
-                        <div class="stat-item" data-testid="stat-3">
-                            <div class="stat-icon">
-                                <i data-lucide="star"></i>
-                            </div>
-                            <div class="stat-value" data-testid="stat-value-3">3+</div>
-                            <div class="stat-label" data-testid="stat-label-3">Years Experience</div>
-                        </div>
-                    </div>
+
+                <div style="margin-top: 4rem; border-top: 1px solid var(--border); padding-top: 2rem;">
+                    <a href="index.html#blogs" class="btn-outline"
+                        style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+                        <i data-lucide="arrow-left"></i> Back to Articles
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section class="services-section animate-section" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-testid="services-title">Professional Services</h2>
-                <p class="section-description" data-testid="services-description">
-                    Comprehensive development solutions tailored to your business needs with transparent pricing and
-                    clear timelines.
-                </p>
+            <div id="error-message" style="display: none; text-align: center; padding: 4rem 0;">
+                <i data-lucide="alert-circle"
+                    style="color: #dc2626; width: 48px; height: 48px; margin-bottom: 1rem;"></i>
+                <h2 style="margin-bottom: 1rem;">Post Not Found</h2>
+                <p style="color: var(--muted-foreground); margin-bottom: 2rem;">We couldn't find the article you're
+                    looking for.</p>
+                <a href="index.html#blogs" class="btn-primary" style="text-decoration: none;">View All Articles</a>
             </div>
-
-            <div class="services-grid">
-                <!-- Service cards will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills/About Section -->
-    <section class="skills-section animate-section" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-testid="skills-title">Technical Expertise</h2>
-                <p class="section-description" data-testid="skills-description">
-                    Proficient in modern technologies with hands-on experience in building scalable applications.
-                </p>
-            </div>
-
-            <div class="skills-grid" data-testid="skills-grid">
-                <!-- Skills will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects-section animate-section" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-testid="projects-title">Featured Projects</h2>
-                <p class="section-description" data-testid="projects-description">
-                    A showcase of recent projects demonstrating technical expertise and client satisfaction.
-                </p>
-            </div>
-
-            <div class="projects-grid">
-                <!-- Project cards will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section class="blogs-section animate-section" id="blogs">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-testid="blogs-title">Latest Articles</h2>
-                <p class="section-description" data-testid="blogs-description">
-                    Stay up to date with my latest thoughts on technology, software development, and more.
-                </p>
-            </div>
-            <div class="carousel-container" data-testid="blogs-carousel-container">
-                <button class="carousel-btn prev-btn" id="blogs-prev-btn" aria-label="Previous posts">
-                    <i data-lucide="chevron-left"></i>
-                </button>
-                <div class="carousel-viewport">
-                    <div class="blogs-grid" data-testid="blogs-grid" id="blogs-grid">
-                        <!-- Blog cards will be populated by JavaScript -->
-                    </div>
-                </div>
-                <button class="carousel-btn next-btn" id="blogs-next-btn" aria-label="Next posts">
-                    <i data-lucide="chevron-right"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section animate-section" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-testid="testimonials-title">Client Testimonials</h2>
-                <p class="section-description" data-testid="testimonials-description">
-                    Hear from satisfied clients who have experienced exceptional service and results.
-                </p>
-            </div>
-
-            <div class="testimonials-grid" data-testid="testimonials-grid">
-                <!-- Testimonials will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
+        </article>
+    </main>
 
     <!-- Contact Section -->
     <section class="contact-section animate-section" id="contact">
@@ -432,7 +352,7 @@
     </script>
 
     <!-- Main JavaScript -->
-    <!-- <script src="script.js"></script> -->
+    <script src="blog.js"></script>
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">

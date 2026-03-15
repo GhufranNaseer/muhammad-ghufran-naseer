@@ -10,7 +10,7 @@ let state = {
 // Data
 const roles = [
   "Full Stack Developer",
-  "WordPress Expert", 
+  "WordPress Expert",
   "AI Integration Specialist",
   "BSCS Graduate"
 ];
@@ -186,7 +186,7 @@ function createIcon(iconName, size = 24) {
 function initTheme() {
   const savedTheme = localStorage.getItem('theme') || 'light';
   document.body.className = `${savedTheme}-theme`;
-  
+
   const themeToggles = document.querySelectorAll('.theme-toggle');
   themeToggles.forEach(toggle => {
     toggle.addEventListener('click', toggleTheme);
@@ -196,7 +196,7 @@ function initTheme() {
 function toggleTheme() {
   const currentTheme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
   const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-  
+
   document.body.className = `${newTheme}-theme`;
   localStorage.setItem('theme', newTheme);
 }
@@ -206,15 +206,15 @@ function initMobileMenu() {
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
-  
+
   mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-  
+
   mobileNavLinks.forEach(link => {
     link.addEventListener('click', () => {
       closeMobileMenu();
     });
   });
-  
+
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
@@ -227,7 +227,7 @@ function toggleMobileMenu() {
   state.mobileMenuOpen = !state.mobileMenuOpen;
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  
+
   if (state.mobileMenuOpen) {
     mobileMenu.classList.add('active');
     mobileMenuBtn.classList.add('active');
@@ -241,7 +241,7 @@ function closeMobileMenu() {
   state.mobileMenuOpen = false;
   const mobileMenu = document.getElementById('mobile-menu');
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  
+
   mobileMenu.classList.remove('active');
   mobileMenuBtn.classList.remove('active');
 }
@@ -249,10 +249,10 @@ function closeMobileMenu() {
 // Typewriter Effect
 function initTypewriter() {
   const typewriterElement = document.getElementById('typewriter-text');
-  
+
   function typewriterEffect() {
     const currentText = roles[state.currentRole];
-    
+
     if (state.typedText.length < currentText.length) {
       state.typedText = currentText.slice(0, state.typedText.length + 1);
       typewriterElement.textContent = state.typedText;
@@ -266,20 +266,20 @@ function initTypewriter() {
       }, 2000);
     }
   }
-  
+
   typewriterEffect();
 }
 
 // Smooth Scrolling
 function initSmoothScrolling() {
   const navLinks = document.querySelectorAll('a[href^="#"]');
-  
+
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = link.getAttribute('href');
       const targetElement = document.querySelector(targetId);
-      
+
       if (targetElement) {
         targetElement.scrollIntoView({
           behavior: 'smooth',
@@ -293,7 +293,7 @@ function initSmoothScrolling() {
 // Intersection Observer for Animations
 function initScrollAnimations() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  
+
   if (prefersReducedMotion) {
     const sections = document.querySelectorAll('.animate-section');
     sections.forEach(section => {
@@ -307,7 +307,7 @@ function initScrollAnimations() {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
   };
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -315,7 +315,7 @@ function initScrollAnimations() {
         element.style.opacity = '1';
         element.style.transform = 'translateY(0)';
         element.classList.add('animate-on-scroll');
-        
+
         // Animate skill progress bars
         if (element.id === 'about') {
           animateSkillBars();
@@ -331,25 +331,26 @@ function initScrollAnimations() {
 // Services Section
 function renderServices() {
   const servicesGrid = document.querySelector('.services-grid');
-  
+  if (!servicesGrid) return;
+
   services.forEach((service, index) => {
     const serviceCard = createElement('div', 'card service-card');
     serviceCard.setAttribute('data-testid', `service-card-${index}`);
-    
+
     const cardContent = createElement('div', 'card-content');
-    
+
     const serviceHeader = createElement('div', 'service-header');
     const serviceIcon = createElement('div', 'service-icon');
     serviceIcon.appendChild(createIcon(service.icon, 32));
     const serviceTitle = createElement('h3', 'service-title', service.title);
     serviceTitle.setAttribute('data-testid', `service-title-${index}`);
-    
+
     serviceHeader.appendChild(serviceIcon);
     serviceHeader.appendChild(serviceTitle);
-    
+
     const serviceDescription = createElement('p', 'service-description', service.desc);
     serviceDescription.setAttribute('data-testid', `service-description-${index}`);
-    
+
     const serviceFeatures = createElement('ul', 'service-features');
     service.features.forEach((feature, idx) => {
       const li = createElement('li');
@@ -358,26 +359,26 @@ function renderServices() {
       li.appendChild(document.createTextNode(feature));
       serviceFeatures.appendChild(li);
     });
-    
+
     const serviceFooter = createElement('div', 'service-footer');
     const servicePrice = createElement('div', 'service-price', service.price);
     servicePrice.setAttribute('data-testid', `service-price-${index}`);
     const serviceTimeline = createElement('div', 'service-timeline', service.timeline);
     serviceTimeline.setAttribute('data-testid', `service-timeline-${index}`);
-    
+
     serviceFooter.appendChild(servicePrice);
     serviceFooter.appendChild(serviceTimeline);
-    
+
     const serviceButton = createElement('button', 'btn-primary', 'Get Started');
     serviceButton.setAttribute('data-testid', `service-button-${index}`);
     serviceButton.addEventListener('click', handleEmailContact);
-    
+
     cardContent.appendChild(serviceHeader);
     cardContent.appendChild(serviceDescription);
     cardContent.appendChild(serviceFeatures);
     cardContent.appendChild(serviceFooter);
     cardContent.appendChild(serviceButton);
-    
+
     serviceCard.appendChild(cardContent);
     servicesGrid.appendChild(serviceCard);
   });
@@ -386,33 +387,34 @@ function renderServices() {
 // Skills Section
 function renderSkills() {
   const skillsGrid = document.querySelector('.skills-grid');
-  
+  if (!skillsGrid) return;
+
   skills.forEach((skill, index) => {
     const skillItem = createElement('div', 'skill-item');
     skillItem.setAttribute('data-testid', `skill-${index}`);
-    
+
     const skillHeader = createElement('div', 'skill-header');
     skillHeader.style.display = 'flex';
     skillHeader.style.justifyContent = 'space-between';
-    
+
     const skillName = createElement('span', 'skill-name', skill.name);
     skillName.setAttribute('data-testid', `skill-name-${index}`);
     const skillLevel = createElement('span', 'skill-level', `${skill.level}%`);
     skillLevel.setAttribute('data-testid', `skill-level-${index}`);
-    
+
     skillHeader.appendChild(skillName);
     skillHeader.appendChild(skillLevel);
-    
+
     const progressBar = createElement('div', 'progress-bar');
     const progressFill = createElement('div', 'progress-fill');
     progressFill.setAttribute('data-level', skill.level);
     progressFill.setAttribute('data-testid', `skill-progress-${index}`);
-    
+
     progressBar.appendChild(progressFill);
-    
+
     skillItem.appendChild(skillHeader);
     skillItem.appendChild(progressBar);
-    
+
     skillsGrid.appendChild(skillItem);
   });
 }
@@ -430,53 +432,54 @@ function animateSkillBars() {
 // Projects Section
 function renderProjects() {
   const projectsGrid = document.querySelector('.projects-grid');
-  
+  if (!projectsGrid) return;
+
   projects.forEach(project => {
     const projectCard = createElement('div', 'card project-card');
     projectCard.setAttribute('data-testid', `project-card-${project.id}`);
     projectCard.addEventListener('click', () => openProjectModal(project));
-    
+
     const imageContainer = createElement('div', 'project-image-container');
     const projectImage = createElement('img', 'project-image');
     projectImage.src = project.image;
-    projectImage.alt = `${project.title} - ${project.category} featuring ${project.tech.slice(0,2).join(' and ')}`;
+    projectImage.alt = `${project.title} - ${project.category} featuring ${project.tech.slice(0, 2).join(' and ')}`;
     projectImage.loading = project.id <= 2 ? 'eager' : 'lazy';
     projectImage.setAttribute('data-testid', `project-image-${project.id}`);
-    
+
     const projectCategory = createElement('div', 'project-category', project.category);
     projectCategory.setAttribute('data-testid', `project-category-${project.id}`);
-    
+
     imageContainer.appendChild(projectImage);
     imageContainer.appendChild(projectCategory);
-    
+
     const projectContent = createElement('div', 'project-content');
-    
+
     const projectTitle = createElement('h3', 'project-title', project.title);
     projectTitle.setAttribute('data-testid', `project-title-${project.id}`);
-    
+
     const projectDescription = createElement('p', 'project-description', project.description);
     projectDescription.setAttribute('data-testid', `project-description-${project.id}`);
-    
+
     const projectTech = createElement('div', 'project-tech');
     project.tech.forEach((tech, idx) => {
       const techTag = createElement('span', 'tech-tag', tech);
       techTag.setAttribute('data-testid', `project-tech-${project.id}-${idx}`);
       projectTech.appendChild(techTag);
     });
-    
+
     const viewButton = createElement('button', 'project-view-button');
     viewButton.setAttribute('data-testid', `project-view-button-${project.id}`);
     viewButton.appendChild(document.createTextNode('View Details'));
     viewButton.appendChild(createIcon('arrow-right', 16));
-    
+
     projectContent.appendChild(projectTitle);
     projectContent.appendChild(projectDescription);
     projectContent.appendChild(projectTech);
     projectContent.appendChild(viewButton);
-    
+
     projectCard.appendChild(imageContainer);
     projectCard.appendChild(projectContent);
-    
+
     projectsGrid.appendChild(projectCard);
   });
 }
@@ -484,13 +487,14 @@ function renderProjects() {
 // Testimonials Section
 function renderTestimonials() {
   const testimonialsGrid = document.querySelector('.testimonials-grid');
-  
+  if (!testimonialsGrid) return;
+
   testimonials.forEach((testimonial, index) => {
     const testimonialCard = createElement('div', 'card testimonial-card');
     testimonialCard.setAttribute('data-testid', `testimonial-${index}`);
-    
+
     const cardContent = createElement('div', 'card-content');
-    
+
     const rating = createElement('div', 'testimonial-rating');
     for (let i = 0; i < testimonial.rating; i++) {
       const star = createIcon('star', 16);
@@ -498,10 +502,10 @@ function renderTestimonials() {
       star.setAttribute('data-testid', `testimonial-star-${index}-${i}`);
       rating.appendChild(star);
     }
-    
+
     const testimonialText = createElement('p', 'testimonial-text', `"${testimonial.text}"`);
     testimonialText.setAttribute('data-testid', `testimonial-text-${index}`);
-    
+
     const testimonialAuthor = createElement('div', 'testimonial-author');
     const testimonialName = createElement('h4', 'testimonial-name', testimonial.name);
     testimonialName.setAttribute('data-testid', `testimonial-name-${index}`);
@@ -509,15 +513,15 @@ function renderTestimonials() {
     testimonialRole.setAttribute('data-testid', `testimonial-role-${index}`);
     const testimonialCompany = createElement('p', 'testimonial-company', testimonial.company);
     testimonialCompany.setAttribute('data-testid', `testimonial-company-${index}`);
-    
+
     testimonialAuthor.appendChild(testimonialName);
     testimonialAuthor.appendChild(testimonialRole);
     testimonialAuthor.appendChild(testimonialCompany);
-    
+
     cardContent.appendChild(rating);
     cardContent.appendChild(testimonialText);
     cardContent.appendChild(testimonialAuthor);
-    
+
     testimonialCard.appendChild(cardContent);
     testimonialsGrid.appendChild(testimonialCard);
   });
@@ -527,7 +531,7 @@ function renderTestimonials() {
 function openProjectModal(project) {
   state.selectedProject = project;
   state.isModalOpen = true;
-  
+
   const modal = document.getElementById('project-modal');
   const modalCategory = document.querySelector('.modal-project-category');
   const modalTitle = document.querySelector('.modal-project-title');
@@ -535,13 +539,13 @@ function openProjectModal(project) {
   const modalDescription = document.querySelector('.modal-project-description');
   const modalFeaturesList = document.querySelector('.modal-features-list');
   const modalTechList = document.querySelector('.modal-tech-list');
-  
+
   modalCategory.textContent = project.category;
   modalTitle.textContent = project.title;
   modalImage.src = project.image;
-  modalImage.alt = `${project.title} project screenshot - ${project.category} built with ${project.tech.slice(0,2).join(' and ')}`;
+  modalImage.alt = `${project.title} project screenshot - ${project.category} built with ${project.tech.slice(0, 2).join(' and ')}`;
   modalDescription.textContent = `${project.description} This project demonstrates advanced development skills with real-time features and comprehensive data management.`;
-  
+
   // Clear and populate features
   modalFeaturesList.innerHTML = '';
   project.features.forEach((feature, idx) => {
@@ -551,7 +555,7 @@ function openProjectModal(project) {
     li.appendChild(document.createTextNode(feature));
     modalFeaturesList.appendChild(li);
   });
-  
+
   // Clear and populate tech stack
   modalTechList.innerHTML = '';
   project.tech.forEach((tech, idx) => {
@@ -559,10 +563,10 @@ function openProjectModal(project) {
     techTag.setAttribute('data-testid', `modal-tech-${idx}`);
     modalTechList.appendChild(techTag);
   });
-  
+
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
-  
+
   // Reinitialize icons in modal
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
@@ -572,7 +576,7 @@ function openProjectModal(project) {
 function closeProjectModal() {
   state.selectedProject = null;
   state.isModalOpen = false;
-  
+
   const modal = document.getElementById('project-modal');
   modal.classList.remove('active');
   document.body.style.overflow = '';
@@ -581,15 +585,15 @@ function closeProjectModal() {
 function initProjectModal() {
   const modal = document.getElementById('project-modal');
   const closeBtn = document.getElementById('modal-close');
-  
+
   closeBtn.addEventListener('click', closeProjectModal);
-  
+
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeProjectModal();
     }
   });
-  
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && state.isModalOpen) {
       closeProjectModal();
@@ -602,13 +606,13 @@ function initContactForm() {
   const contactForm = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
   const formStatus = document.getElementById('form-status');
-  
+
   // Initialize EmailJS
   emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-  
+
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(contactForm);
     const templateParams = {
       name: formData.get('name'),
@@ -616,7 +620,7 @@ function initContactForm() {
       subject: formData.get('subject'),
       message: formData.get('message')
     };
-    
+
     // Show loading state
     submitBtn.classList.add('loading');
     const btnText = submitBtn.querySelector('.btn-text');
@@ -624,7 +628,7 @@ function initContactForm() {
     btnText.style.opacity = '0';
     loadingSpinner.style.display = 'block';
     submitBtn.disabled = true;
-    
+
     try {
       // Try EmailJS first
       await emailjs.sendForm(
@@ -633,23 +637,23 @@ function initContactForm() {
         contactForm,
         EMAILJS_CONFIG.PUBLIC_KEY
       );
-      
+
       // Show success message
       formStatus.className = 'form-status success';
       formStatus.textContent = 'Message sent successfully! I\'ll get back to you within 24 hours.';
       contactForm.reset();
-      
+
     } catch (error) {
       console.error('EmailJS Error:', error);
-      
+
       // Fallback: Create mailto link with form data
       const name = formData.get('name');
       const email = formData.get('email');
       const subject = formData.get('subject');
       const message = formData.get('message');
-      
+
       const mailtoLink = `mailto:me.ghufrannaseer@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-      
+
       // Show alternative contact options
       formStatus.className = 'form-status warning';
       formStatus.innerHTML = `
@@ -660,7 +664,7 @@ function initContactForm() {
           <a href="mailto:me.ghufrannaseer@gmail.com" style="color: #007bff; text-decoration: underline;">me.ghufrannaseer@gmail.com</a>
         </div>
       `;
-      
+
     } finally {
       // Reset button state
       submitBtn.classList.remove('loading');
@@ -680,7 +684,7 @@ function handleOpenContactForm() {
   const contactSection = document.getElementById('contact');
   if (contactSection) {
     contactSection.scrollIntoView({ behavior: 'smooth' });
-    
+
     const focusInput = () => {
       const firstInput = contactSection.querySelector('input');
       if (firstInput) {
@@ -690,7 +694,7 @@ function handleOpenContactForm() {
         });
       }
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && entry.intersectionRatio > 0.8) {
@@ -699,9 +703,9 @@ function handleOpenContactForm() {
         }
       });
     }, { threshold: 0.8 });
-    
+
     observer.observe(contactSection);
-    
+
     setTimeout(() => {
       focusInput();
       observer.disconnect();
@@ -712,7 +716,7 @@ function handleOpenContactForm() {
 function downloadCV() {
   const fileId = '1vNVCFRp8ziqx5NS2RZV5qC5nIcSzqX2L';
   const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-  
+
   const link = document.createElement('a');
   link.href = downloadUrl;
   link.download = 'Muhammad_Ghufran_CV.pdf';
@@ -730,7 +734,7 @@ function initEventListeners() {
   const startProjectBtn = document.getElementById('start-project-btn');
   const downloadCVBtn = document.getElementById('download-cv-btn');
   const sendMessageBtn = document.getElementById('send-message-btn');
-  
+
   if (getQuoteBtn) getQuoteBtn.addEventListener('click', handleOpenContactForm);
   if (mobileGetQuoteBtn) mobileGetQuoteBtn.addEventListener('click', handleEmailContact);
   if (startProjectBtn) startProjectBtn.addEventListener('click', handleOpenContactForm);
@@ -745,7 +749,7 @@ function initApp() {
     document.addEventListener('DOMContentLoaded', initApp);
     return;
   }
-  
+
   // Initialize all components
   initTheme();
   initMobileMenu();
@@ -754,49 +758,155 @@ function initApp() {
   initProjectModal();
   initContactForm();
   initEventListeners();
-  
+
   // Render dynamic content
   renderServices();
   renderSkills();
   renderProjects();
   renderTestimonials();
-  
+
   // Start typewriter effect
   initTypewriter();
-  
+
   // Initialize Lucide icons
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
-  
+
   console.log('Portfolio app initialized successfully!');
 }
- document.addEventListener("DOMContentLoaded", function () {
-    const projectsGrid = document.querySelector(".projects-grid");
+document.addEventListener("DOMContentLoaded", function () {
+  const blogsGrid = document.querySelector(".blogs-grid");
+  if (!blogsGrid) return;
 
-    fetch("https://my-blog-backend-phi.vercel.app/api/posts")
-        .then(response => response.json())
-        .then(data => {
-            if (data.success && data.posts.length > 0) {
-                projectsGrid.innerHTML = "";
+  function renderBlogSkeletons() {
+    blogsGrid.innerHTML = "";
+    // Show 3 skeletons by default
+    for (let i = 0; i < 3; i++) {
+      blogsGrid.innerHTML += `
+                <div class="card project-card">
+                    <div class="skeleton-image skeleton"></div>
+                    <div class="project-content">
+                        <div class="skeleton-title skeleton"></div>
+                        <div class="skeleton-text skeleton"></div>
+                        <div class="skeleton-text skeleton short"></div>
+                        <div class="skeleton-category skeleton"></div>
+                        <div class="skeleton-footer">
+                            <div class="skeleton-btn skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+    }
+  }
 
-                data.posts.forEach(post => {
-                    projectsGrid.innerHTML += `
-                        <div class="project-card">
-                            <img src="${post.coverImage}" alt="${post.title}" style="width:100%; border-radius:10px;">
-                            <div style="padding:15px;">
-                                <h3>${post.title}</h3>
-                                <p>${post.excerpt}</p>
-                                <small>${post.category}</small>
+  renderBlogSkeletons();
+
+  fetch("https://my-blog-backend-phi.vercel.app/api/posts")
+    .then(response => response.json())
+    .then(data => {
+      if (data.success && data.posts.length > 0) {
+        blogsGrid.innerHTML = "";
+
+        data.posts.forEach(post => {
+          blogsGrid.innerHTML += `
+                        <div class="card project-card">
+                            <div class="project-image-container">
+                                <img class="project-image" src="${post.coverImage}" alt="${post.title}">
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">${post.title}</h3>
+                                <p class="project-description">${post.excerpt}</p>
+                                <div class="project-category">${post.category || 'Blog'}</div>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Blog Post</span>
+                                    <span class="tech-tag" style="display: flex; align-items: center; gap: 4px;">
+                                        <i data-lucide="calendar" style="width: 14px; height: 14px;"></i> 
+                                        ${new Date(post.publishedAt || post.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                                    </span>
+                                </div>
+                                <a href="blog.html?id=${post._id || post.id}" class="project-view-button" style="text-decoration: none;">
+                                    Read Post <i data-lucide="arrow-right"></i>
+                                </a>
                             </div>
                         </div>
                     `;
-                });
-            }
-        })
-        .catch(error => {
-            console.error("Error fetching projects:", error);
         });
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
+
+        // Carousel Logic
+        const nextBtn = document.getElementById('blogs-next-btn');
+        const prevBtn = document.getElementById('blogs-prev-btn');
+        let currentSlide = 0;
+
+        function updateCarousel() {
+          const card = blogsGrid.querySelector('.project-card');
+          if (!card) return;
+          // 3 cards on desktop, 2 on tablet, 1 on mobile
+          const visibleCards = window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
+          const maxSlide = Math.max(0, data.posts.length - visibleCards);
+
+          // Boundary enforcement
+          if (currentSlide > maxSlide) currentSlide = maxSlide;
+          if (currentSlide < 0) currentSlide = 0;
+
+          prevBtn.disabled = currentSlide === 0;
+          nextBtn.disabled = currentSlide >= maxSlide;
+
+          const cardWidth = card.offsetWidth;
+          // 2rem is 32px based on CSS root font-size
+          const gap = parseFloat(getComputedStyle(blogsGrid).gap) || 32;
+
+          blogsGrid.style.transform = `translateX(-${currentSlide * (cardWidth + gap)}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+          currentSlide++;
+          updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+          currentSlide--;
+          updateCarousel();
+        });
+
+        window.addEventListener('resize', updateCarousel);
+
+        // ── Touch swipe support (mobile) ──
+        const viewport = blogsGrid.closest('.carousel-viewport');
+        if (viewport) {
+          let touchStartX = 0;
+          let touchStartY = 0;
+
+          viewport.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+          }, { passive: true });
+
+          viewport.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            const dy = e.changedTouches[0].clientY - touchStartY;
+            // Only treat as horizontal swipe if horizontal movement dominates
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+              if (dx < 0) {
+                currentSlide++;   // swipe left → next
+              } else {
+                currentSlide--;   // swipe right → prev
+              }
+              updateCarousel();
+            }
+          }, { passive: true });
+        }
+
+        // Initial setup after images/DOM settles
+        setTimeout(updateCarousel, 100);
+      }
+    })
+    .catch(error => {
+      console.error("Error fetching projects:", error);
+    });
 });
 // Start the application
 initApp();
