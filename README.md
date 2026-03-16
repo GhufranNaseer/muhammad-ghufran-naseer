@@ -4,7 +4,7 @@ A modern, responsive personal portfolio website showcasing professional services
 
 ## 🌐 Live Demo
 
-The portfolio is deployed and accessible at: **[(https://ghufrannaseer.github.io/muhammad-ghufran-naseer/)]** *(deployment URL to be configured)*
+The portfolio is deployed and accessible at: **[(https://ghufrannaseer.github.io)]** *(deployment URL to be configured)*
 
 
 
