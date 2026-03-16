@@ -90,7 +90,7 @@ The portfolio is deployed and accessible at: **[(https://ghufrannaseer.github.io
 ## 📁 Folder Structure
 
 ```
-muhammad-ghufran-naseer/
+https://ghufrannaseer.github.io/
 ├── index.html              # Main HTML document with all page structure
 ├── blog.html               # Single blog post detail page
 ├── styles.css              # Complete styling with theme system and skeletons
@@ -113,8 +113,8 @@ muhammad-ghufran-naseer/
 
 1. **Clone the repository** (if applicable):
    ```bash
-   git clone https://github.com/GhufranNaseer/muhammad-ghufran-naseer.git
-   cd muhammad-ghufran-naseer
+   git clone https://github.com/GhufranNaseer/https://ghufrannaseer.github.io.git
+   cd https://ghufrannaseer.github.io
    ```
 
 2. **Start a local web server**:
